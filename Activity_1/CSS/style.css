@@ -1,7 +1,19 @@
 
 
+span {
+    font-size: x-large;
+    font-size: italic;
+    text-decoration: underline;
+}
 
 .headline {
-    color: rgb(193, 168, 217);
-    background-color: brown;
+    font-variant-caps: small-caps;
+}
+
+#world {
+    text-align: right;
+}
+
+div>span {
+    text-indent: 20%;
 }
