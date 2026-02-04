@@ -1,0 +1,19 @@
+/* Stylesheet by Yilun Spring 2026 */
+
+span {
+    font-size: x-large;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.headline {
+    font-variant-caps: small-caps;
+}
+
+#world {
+    text-align: right;
+}
+
+div > span {
+    text-indent: 20%;
+}
