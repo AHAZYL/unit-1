@@ -31,7 +31,12 @@ function initialize(){
     addColumns(cityPop);   // Add an additional column that categorizes cities by size
 
     addEvents();   // Add mouseover and click event listeners to the table
+
+    debugAjax();
 }
+
+
+document.addEventListener("DOMContentLoaded", initialize);
 
 // Function to create an HTML table
 function createTable(){
@@ -114,5 +119,45 @@ function addEvents(){
     });
 }
 
-// Run the initialize function
-document.addEventListener("DOMContentLoaded", initialize);
+
+
+
+// Start Activity 4
+
+function debugAjax(){
+
+    // Declare a variable to hold the GeoJSON data
+    var myData;
+    console.log("Outside fetch:", myData);
+
+    // Send an asynchronous request to load the .js file
+    fetch("data/MegaCities.geojson")
+        .then(function(response){    // The browser receives a Response object and also returns a promise
+            return response.json();
+        })
+
+        // This runs only after the data has fully loaded
+        .then(function(response){
+
+            // Assign .js data to the variable myData
+            myData = response;
+            console.log("Inside callback:", myData);
+
+            // Pass the loaded data to another function that ensures we only use the data after it is ready
+            debugCallback(myData);
+        });
+}
+
+
+// Define the callback function
+function debugCallback(response){
+
+    // Select the div with id "mydiv" and insert the .js as a string into the page
+    document.querySelector("#mydiv").insertAdjacentHTML(
+        "beforeend",
+        "<br><strong>GeoJSON data:</strong><br>" +
+
+        JSON.stringify(response)    // Convert the JavaScript object into a readable string format
+    );
+}
+
